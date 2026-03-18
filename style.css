@@ -10,17 +10,143 @@
 
 * { box-sizing: border-box; }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: var(--bg);
   color: var(--text);
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
-  max-width: 1120px;
+  width: min(95vw, 1240px);
+  max-width: 1240px;
+  min-height: 100vh;
   margin: 0 auto;
-  padding: 24px;
+  padding: 32px;
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: min(98vw, 1280px);
+  margin: 0 auto;
+  min-height: 70vh;
+  padding: 28px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 26px;
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.carousel-card {
+  flex: 0 0 min(58vw, 760px);
+  min-width: 420px;
+  min-height: 340px;
+  aspect-ratio: 16 / 8;
+  padding: 40px;
+  border-radius: 16px;
+  opacity: 0.52;
+  transform: scale(0.88);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1;
+  background-color: var(--card);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-card.hero-promo {
+  background-color: var(--card2);
+}
+
+.carousel-card .hero-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: linear-gradient(135deg, #ffffff 0%, #1b2c41 100%);
+}
+
+.carousel-card .hero-content,
+.carousel-card .hero-promo {
+  position: relative;
+  z-index: 1;
+}
+
+.carousel-card.nearby {
+  opacity: 0.72;
+  transform: scale(0.92);
+}
+
+.carousel-card.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 3;
+}
+
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  font-size: 1.45rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1004;
+}
+
+.carousel-btn:hover {
+  background: #0f1d30;
+}
+
+@media (max-width: 860px) {
+  .carousel-wrapper { flex-direction: column; min-height: auto; padding: 18px 0; }
+  .carousel-btn { width: 36px; height: 36px; font-size: 1.25rem; }
+  .hero-card { min-width: 80vw; aspect-ratio: auto; }
+  .carousel-track { gap: 20px; }
+}
+
+.hero-card h1,
+.hero-card h2,
+.carousel-card h1,
+.carousel-card h2 {
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.hero-card p,
+.carousel-card p {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+}
+
+.btn {
+  padding: 14px 24px;
+  font-size: 1.1rem;
 }
 
 .menu-toggle {
