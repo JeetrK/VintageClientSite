@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog - Vintage Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .catalog-header {
+      padding: 24px 0;
+      margin-bottom: 32px;
+    }
+
+    .catalog-header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 16px 0;
+      color: var(--text);
+    }
+
+    .catalog-header p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .catalog-item {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e5e5e5;
+    }
+
+    .catalog-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .catalog-item-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, #e99b99 0%, #d06969 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--white);
+      opacity: 0.8;
+    }
+
+    .catalog-item-image.alt1 { background: linear-gradient(135deg, #7ba3b6 0%, #9ac9a8 100%); }
+    .catalog-item-image.alt2 { background: linear-gradient(135deg, #f4d172 0%, #e99b99 100%); }
+    .catalog-item-image.alt3 { background: linear-gradient(135deg, #9ac9a8 0%, #7ba3b6 100%); }
+
+    .catalog-item-content {
+      padding: 16px;
+    }
+
+    .catalog-item-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 8px 0;
+    }
+
+    .catalog-item-price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--card2);
+      margin: 0 0 12px 0;
+    }
+
+    .catalog-item-description {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0 0 12px 0;
+      line-height: 1.4;
+    }
+
+    .catalog-item-btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .catalog-item-btn:hover {
+      background: #0f1d30;
+    }
+
+    @media (max-width: 768px) {
+      .catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 16px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .catalog-header {
+        padding: 16px 0;
+        margin-bottom: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="menuToggle" class="menu-toggle" aria-label="Open navigation">☰</button>
+
+  <aside id="sideNav" class="side-nav" aria-hidden="true">
+    <button id="closeNav" class="close-nav" aria-label="Close navigation">×</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Shop</a>
+      <a href="index.html#newsletter">Newsletter</a>
+      <a href="#help">Help</a>
+      <a href="#company">Company</a>
+    </nav>
+  </aside>
+
+  <div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
+
+  <main class="container">
+    <section class="catalog-header">
+      <h1>Vintage Catalog</h1>
+      <p>Browse our collection of timeless vintage pieces</p>
+    </section>
+
+    <section class="catalog-grid">
+      <div class="catalog-item">
+        <div class="catalog-item-image">🕰️</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Classic Pocket Watch</h3>
+          <p class="catalog-item-price">$145.00</p>
+          <p class="catalog-item-description">Elegant brass finish with working mechanism</p>
+          <button class="catalog-item-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="catalog-item">
+        <div class="catalog-item-image alt1">📷</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Vintage Camera</h3>
+          <p class="catalog-item-price">$89.99</p>
+          <p class="catalog-item-description">1960s rangefinder camera, fully functional</p>
+          <button class="catalog-item-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="catalog-item">
+        <div class="catalog-item-image alt2">📚</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Antique Books Set</h3>
+          <p class="catalog-item-price">$220.00</p>
+          <p class="catalog-item-description">First editions, hardcover with dust jackets</p>
+          <button class="catalog-item-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="catalog-item">
+        <div class="catalog-item-image alt3">🎵</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Vinyl Record Player</h3>
+          <p class="catalog-item-price">$195.50</p>
+          <p class="catalog-item-description">1970s turntable with original speakers</p>
+          <button class="catalog-item-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="catalog-item">
+        <div class="catalog-item-image">💍</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Pearl Necklace</h3>
+          <p class="catalog-item-price">$165.00</p>
+          <p class="catalog-item-description">Authentic freshwater pearls with gold clasp</p>
+          <button class="catalog-item-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="catalog-item">
+        <div class="catalog-item-image alt1">🕯️</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Chandelier Fixture</h3>
+          <p class="catalog-item-price">$320.00</p>
+          <p class="catalog-item-description">Crystal and brass, circa 1950s</p>
+          <button class="catalog-item-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="catalog-item">
+        <div class="catalog-item-image alt2">⌚</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Wristwatch</h3>
+          <p class="catalog-item-price">$125.00</p>
+          <p class="catalog-item-description">Mechanical Swiss movement, leather band</p>
+          <button class="catalog-item-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="catalog-item">
+        <div class="catalog-item-image alt3">🪑</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Mid-Century Chair</h3>
+          <p class="catalog-item-price">$275.00</p>
+          <p class="catalog-item-description">Authentic eames-inspired design</p>
+          <button class="catalog-item-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="catalog-item">
+        <div class="catalog-item-image">🎨</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Framed Artwork</h3>
+          <p class="catalog-item-price">$185.00</p>
+          <p class="catalog-item-description">Original botanical print, wood frame</p>
+          <button class="catalog-item-btn">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-grid">
+      <div>
+        <h4>Shop</h4>
+        <a href="#">Home</a>
+        <a href="#">Rantisei</a>
+        <a href="#">Bamtical</a>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <a href="#">Home</a>
+        <a href="#">Rantical</a>
+        <a href="#">Bamtical</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#">Home</a>
+        <a href="#">Rantical</a>
+        <a href="#">Bamtical</a>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <div class="social-icons">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

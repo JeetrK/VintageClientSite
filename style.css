@@ -33,6 +33,11 @@ body {
   min-height: 100vh;
   margin: 0 auto;
   padding: 32px;
+  transition: margin-left 0.28s ease;
+}
+
+.container.nav-open {
+  margin-left: min(320px, 80vw);
 }
 
 .carousel-wrapper {
