@@ -1,11 +1,11 @@
 ﻿:root {
-  --bg: #fdfdfb;
-  --card: #e99b99;
-  --card2: #d06969;
-  --text: #1f3348;
-  --muted: #2d3f53;
-  --accent: #1b2c41;
-  --white: #ffffff;
+  --bg: #F5DEB3; /* Wheat */
+  --card: #DAA520; /* Goldenrod */
+  --card2: #8B4513; /* Saddle Brown */
+  --text: #2F1B14; /* Dark brown */
+  --muted: #5D4E37; /* Medium brown */
+  --accent: #8B4513; /* Saddle Brown */
+  --white: #FFF8DC; /* Cream */
 }
 
 * { box-sizing: border-box; }
@@ -25,6 +25,19 @@ body {
   color: var(--text);
   display: flex;
   flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: #f5efe1;
+  border-bottom: 2px solid var(--accent);
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
 }
 
 .container {
@@ -77,11 +90,11 @@ body {
   opacity: 1;
 }
 
-.slide-1 { background-color: #d06969; }
-.slide-2 { background-color: #e99b99; }
-.slide-3 { background-color: #7ba3b6; }
-.slide-4 { background-color: #9ac9a8; }
-.slide-5 { background-color: #f4d172; }
+.slide-1 { background-color: #DAA520; }
+.slide-2 { background-color: #8B4513; }
+.slide-3 { background-color: #F5DEB3; }
+.slide-4 { background-color: #DEB887; }
+.slide-5 { background-color: #CD853F; }
 .carousel-card.hero-promo {
   background-color: var(--card2);
 }
@@ -175,9 +188,9 @@ body {
   left: 0;
   width: min(320px, 80vw);
   height: 100%;
-  background: #ffffff;
-  border-right: 1px solid #ccd4e1;
-  box-shadow: 4px 0 18px rgba(20, 34, 53, 0.25);
+  background: var(--white);
+  border-right: 1px solid var(--accent);
+  box-shadow: 4px 0 18px rgba(139, 69, 19, 0.25);
   transform: translateX(-105%);
   transition: transform 0.28s ease;
   z-index: 1002;
@@ -305,7 +318,7 @@ body {
   gap: 10px;
   border: 2px solid var(--accent);
   border-radius: 10px;
-  background: #fff;
+  background: var(--white);
   padding: 10px;
 }
 
@@ -331,7 +344,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px;
-  border-top: 1px solid #c2c7d2;
+  border-top: 1px solid var(--accent);
   padding-top: 18px;
 }
 

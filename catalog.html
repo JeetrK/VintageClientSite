@@ -47,7 +47,7 @@
     .catalog-item-image {
       width: 100%;
       aspect-ratio: 1 / 1;
-      background: linear-gradient(135deg, #e99b99 0%, #d06969 100%);
+      background: linear-gradient(135deg, var(--card) 0%, var(--card2) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -119,6 +119,9 @@
   </style>
 </head>
 <body>
+  <header class="header">
+    <img src="imgs/logo2.png" alt="Vintage Shop Logo" class="logo">
+  </header>
   <button id="menuToggle" class="menu-toggle" aria-label="Open navigation">☰</button>
 
   <aside id="sideNav" class="side-nav" aria-hidden="true">
