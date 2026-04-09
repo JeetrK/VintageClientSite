@@ -25,7 +25,7 @@
 
     .catalog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(5, minmax(180px, 1fr));
       gap: 40px;
       margin-bottom: 48px;
     }
@@ -37,6 +37,8 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid #e5e5e5;
+      display: flex;
+      flex-direction: column;
     }
 
     .catalog-item:hover {
@@ -46,14 +48,22 @@
 
     .catalog-item-image {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 4 / 5;
       background: linear-gradient(135deg, var(--card) 0%, var(--card2) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 3rem;
       color: var(--white);
-      opacity: 0.8;
+      opacity: 0.85;
+      position: relative;
+    }
+
+    .catalog-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .catalog-item-image.alt1 { background: linear-gradient(135deg, #7ba3b6 0%, #9ac9a8 100%); }
@@ -62,6 +72,9 @@
 
     .catalog-item-content {
       padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .catalog-item-title {
@@ -81,17 +94,18 @@
     .catalog-item-description {
       font-size: 0.95rem;
       color: var(--muted);
-      margin: 0 0 12px 0;
+      margin: 0 0 16px 0;
       line-height: 1.4;
+      flex: 1;
     }
 
     .catalog-item-btn {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: none;
       background: var(--accent);
       color: var(--white);
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
       transition: background 0.3s ease;
@@ -99,6 +113,158 @@
 
     .catalog-item-btn:hover {
       background: #0f1d30;
+    }
+
+    .catalog-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10010;
+    }
+
+    .catalog-modal.open {
+      display: flex;
+    }
+
+    .catalog-modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 29, 48, 0.65);
+      backdrop-filter: blur(1px);
+    }
+
+    .catalog-modal-dialog {
+      position: relative;
+      width: min(95vw, 1080px);
+      max-height: 90vh;
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      padding: 32px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: var(--text);
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .modal-carousel {
+      position: relative;
+      background: #f7f2e8;
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .modal-slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #fff;
+      text-align: center;
+      padding: 0;
+      background: linear-gradient(135deg, #c59f70 0%, #8b5e34 100%);
+    }
+
+    .modal-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-slide.active {
+      display: block;
+    }
+
+    .modal-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .modal-info h2 {
+      margin: 0 0 12px 0;
+      font-size: clamp(2rem, 3vw, 2.5rem);
+      color: var(--text);
+    }
+
+    .modal-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--card2);
+      margin: 0 0 16px 0;
+    }
+
+    .modal-description {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 0 20px 0;
+    }
+
+    .modal-details {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .modal-details li {
+      background: #f5efe1;
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .modal-controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .modal-controls button {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .modal-controls button:hover {
+      background: var(--card2);
+    }
+
+    @media (max-width: 1080px) {
+      .catalog-modal-dialog {
+        grid-template-columns: 1fr;
+        max-height: 85vh;
+        padding: 24px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -115,6 +281,23 @@
         padding: 16px 0;
         margin-bottom: 24px;
       }
+
+      .catalog-modal-dialog {
+        width: 100vw;
+        height: 100vh;
+        max-height: none;
+        border-radius: 0;
+        padding: 20px;
+      }
+
+      .modal-close {
+        top: 14px;
+        right: 14px;
+      }
+
+      .modal-carousel {
+        min-height: 320px;
+      }
     }
   </style>
 </head>
@@ -129,9 +312,7 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="catalog.html">Shop</a>
-      <a href="index.html#newsletter">Newsletter</a>
-      <a href="#help">Help</a>
-      <a href="#company">Company</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </aside>
 
@@ -144,96 +325,131 @@
     </section>
 
     <section class="catalog-grid">
-      <div class="catalog-item">
-        <div class="catalog-item-image">🕰️</div>
+      <article class="catalog-item">
+        <div class="catalog-item-image">
+          <img src="imgs/Jacket1.jpg" alt="Navy photographer souvenir jacket">
+        </div>
         <div class="catalog-item-content">
-          <h3 class="catalog-item-title">Classic Pocket Watch</h3>
+          <h3 class="catalog-item-title">Navy photographer souvenir jacket</h3>
+          <p class="catalog-item-price">$120.00</p>
+          <p class="catalog-item-description">Rare 1965 - 80s</p>
+          <button class="catalog-item-btn" type="button" data-title="Navy Photographer Souvenir Jacket" data-price="$120.00" data-description="Photographer souvenir jacket with two rare patches on a late 60s Lee Western Snow Pac jacket. 1970s death rattled patch. 1965 Vietnam War helicopter patch." data-details="Size: M-L" data-images="jacket1.jpg|jacket2.jpg|jacket3.jpg">View Details</button>
+        </div>
+      </article>
+
+      <article class="catalog-item">
+        <div class="catalog-item-image alt1">👖</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Denim Jacket</h3>
+          <p class="catalog-item-price">$88.00</p>
+          <p class="catalog-item-description">Lightweight denim jacket with vintage wash and tailored fit.</p>
+          <button class="catalog-item-btn" type="button" data-title="Denim Jacket" data-price="$88.00" data-description="A retro-inspired denim jacket with a worn-in finish and structured silhouette." data-details="100% cotton|Button closure|Size M shown|Machine wash cold" data-images="Front view|Sleeve detail|Back view">View Details</button>
+        </div>
+      </article>
+
+      <article class="catalog-item">
+        <div class="catalog-item-image alt3">👗</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Floral Maxi Dress</h3>
+          <p class="catalog-item-price">$105.00</p>
+          <p class="catalog-item-description">Flowing maxi dress with delicate vintage florals.</p>
+          <button class="catalog-item-btn" type="button" data-title="Floral Maxi Dress" data-price="$105.00" data-description="Lightweight fabric, tiered skirt, and soft floral prints for an elegant look." data-details="Poly blend|Floor length|Side pockets|Hand wash" data-images="Front view|Detail print|Back view">View Details</button>
+        </div>
+      </article>
+
+      <article class="catalog-item">
+        <div class="catalog-item-image alt1">🥾</div>
+        <div class="catalog-item-content">
+          <h3 class="catalog-item-title">Leather Boots</h3>
           <p class="catalog-item-price">$145.00</p>
-          <p class="catalog-item-description">Elegant brass finish with working mechanism</p>
-          <button class="catalog-item-btn">View Details</button>
+          <p class="catalog-item-description">Sturdy leather boots with classic vintage hardware.</p>
+          <button class="catalog-item-btn" type="button" data-title="Leather Boots" data-price="$145.00" data-description="Durable leather boot with lace-up front and polished finish." data-details="Genuine leather|Rubber sole|Ankle height|Condition: excellent" data-images="Side view|Sole detail|Top view">View Details</button>
         </div>
-      </div>
+      </article>
 
-      <div class="catalog-item">
-        <div class="catalog-item-image alt1">📷</div>
+      <article class="catalog-item">
+        <div class="catalog-item-image alt2">🧣</div>
         <div class="catalog-item-content">
-          <h3 class="catalog-item-title">Vintage Camera</h3>
-          <p class="catalog-item-price">$89.99</p>
-          <p class="catalog-item-description">1960s rangefinder camera, fully functional</p>
-          <button class="catalog-item-btn">View Details</button>
+          <h3 class="catalog-item-title">Wool Scarf</h3>
+          <p class="catalog-item-price">$42.00</p>
+          <p class="catalog-item-description">Soft wool scarf with subtle stripes and warm texture.</p>
+          <button class="catalog-item-btn" type="button" data-title="Wool Scarf" data-price="$42.00" data-description="Cozy wool scarf with timeless styling, perfect for cooler days." data-details="100% wool|One size|Hand wash|Soft texture" data-images="Folded view|Fabric close-up|Wrapped view">View Details</button>
         </div>
-      </div>
+      </article>
 
-      <div class="catalog-item">
-        <div class="catalog-item-image alt2">📚</div>
+      <article class="catalog-item">
+        <div class="catalog-item-image alt3">👚</div>
         <div class="catalog-item-content">
-          <h3 class="catalog-item-title">Antique Books Set</h3>
-          <p class="catalog-item-price">$220.00</p>
-          <p class="catalog-item-description">First editions, hardcover with dust jackets</p>
-          <button class="catalog-item-btn">View Details</button>
+          <h3 class="catalog-item-title">Silk Blouse</h3>
+          <p class="catalog-item-price">$110.00</p>
+          <p class="catalog-item-description">Elegant silk blouse with buttoned cuffs and soft drape.</p>
+          <button class="catalog-item-btn" type="button" data-title="Silk Blouse" data-price="$110.00" data-description="Light silk blouse with refined finish and structured collar." data-details="100% silk|Button cuffs|Dry clean only|Vintage cut" data-images="Front view|Sleeve detail|Collar detail">View Details</button>
         </div>
-      </div>
+      </article>
 
-      <div class="catalog-item">
-        <div class="catalog-item-image alt3">🎵</div>
+      <article class="catalog-item">
+        <div class="catalog-item-image">👖</div>
         <div class="catalog-item-content">
-          <h3 class="catalog-item-title">Vinyl Record Player</h3>
-          <p class="catalog-item-price">$195.50</p>
-          <p class="catalog-item-description">1970s turntable with original speakers</p>
-          <button class="catalog-item-btn">View Details</button>
+          <h3 class="catalog-item-title">Corduroy Pants</h3>
+          <p class="catalog-item-price">$74.00</p>
+          <p class="catalog-item-description">Textured corduroy pants with relaxed, retro styling.</p>
+          <button class="catalog-item-btn" type="button" data-title="Corduroy Pants" data-price="$74.00" data-description="Soft corduroy with a relaxed leg and high-waisted silhouette." data-details="Cotton blend|High rise|Vintage fit|Machine wash cold" data-images="Front view|Back pocket|Fabric detail">View Details</button>
         </div>
-      </div>
+      </article>
 
-      <div class="catalog-item">
-        <div class="catalog-item-image">💍</div>
+      <article class="catalog-item">
+        <div class="catalog-item-image alt1">🧥</div>
         <div class="catalog-item-content">
-          <h3 class="catalog-item-title">Pearl Necklace</h3>
-          <p class="catalog-item-price">$165.00</p>
-          <p class="catalog-item-description">Authentic freshwater pearls with gold clasp</p>
-          <button class="catalog-item-btn">View Details</button>
+          <h3 class="catalog-item-title">Tweed Blazer</h3>
+          <p class="catalog-item-price">$138.00</p>
+          <p class="catalog-item-description">Tailored tweed blazer with a structured, classic look.</p>
+          <button class="catalog-item-btn" type="button" data-title="Tweed Blazer" data-price="$138.00" data-description="Crisp tweed blazer with gold buttons and vintage-inspired cut." data-details="Wool blend|Single breasted|Fully lined|Dry clean only" data-images="Front view|Button detail|Lapel detail">View Details</button>
         </div>
-      </div>
+      </article>
 
-      <div class="catalog-item">
-        <div class="catalog-item-image alt1">🕯️</div>
+      <article class="catalog-item">
+        <div class="catalog-item-image alt3">🕶️</div>
         <div class="catalog-item-content">
-          <h3 class="catalog-item-title">Chandelier Fixture</h3>
-          <p class="catalog-item-price">$320.00</p>
-          <p class="catalog-item-description">Crystal and brass, circa 1950s</p>
-          <button class="catalog-item-btn">View Details</button>
+          <h3 class="catalog-item-title">Retro Sunglasses</h3>
+          <p class="catalog-item-price">$38.00</p>
+          <p class="catalog-item-description">Bold frame sunglasses with an iconic retro vibe.</p>
+          <button class="catalog-item-btn" type="button" data-title="Retro Sunglasses" data-price="$38.00" data-description="Stylish sunglasses with UV protection and a vintage-inspired shape." data-details="UV400 protection|Plastic frame|One size|Lightweight" data-images="Front view|Side view|Case view">View Details</button>
         </div>
-      </div>
+      </article>
 
-      <div class="catalog-item">
-        <div class="catalog-item-image alt2">⌚</div>
+      <article class="catalog-item">
+        <div class="catalog-item-image">🎒</div>
         <div class="catalog-item-content">
-          <h3 class="catalog-item-title">Wristwatch</h3>
-          <p class="catalog-item-price">$125.00</p>
-          <p class="catalog-item-description">Mechanical Swiss movement, leather band</p>
-          <button class="catalog-item-btn">View Details</button>
+          <h3 class="catalog-item-title">Leather Satchel</h3>
+          <p class="catalog-item-price">$130.00</p>
+          <p class="catalog-item-description">Structured leather satchel with brass hardware and roomy interior.</p>
+          <button class="catalog-item-btn" type="button" data-title="Leather Satchel" data-price="$130.00" data-description="Classic leather satchel with adjustable strap and fitted compartments." data-details="Genuine leather|Brass hardware|Interior pockets|Vintage finish" data-images="Front view|Interior view|Strap detail">View Details</button>
         </div>
-      </div>
-
-      <div class="catalog-item">
-        <div class="catalog-item-image alt3">🪑</div>
-        <div class="catalog-item-content">
-          <h3 class="catalog-item-title">Mid-Century Chair</h3>
-          <p class="catalog-item-price">$275.00</p>
-          <p class="catalog-item-description">Authentic eames-inspired design</p>
-          <button class="catalog-item-btn">View Details</button>
-        </div>
-      </div>
-
-      <div class="catalog-item">
-        <div class="catalog-item-image">🎨</div>
-        <div class="catalog-item-content">
-          <h3 class="catalog-item-title">Framed Artwork</h3>
-          <p class="catalog-item-price">$185.00</p>
-          <p class="catalog-item-description">Original botanical print, wood frame</p>
-          <button class="catalog-item-btn">View Details</button>
-        </div>
-      </div>
+      </article>
     </section>
+
+    <div id="catalogModal" class="catalog-modal" aria-hidden="true">
+      <div class="catalog-modal-overlay"></div>
+      <div class="catalog-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" aria-label="Close details">×</button>
+        <div class="modal-carousel">
+          <div class="modal-slide active" data-label="Front View"></div>
+          <div class="modal-slide" data-label="Side View"></div>
+          <div class="modal-slide" data-label="Detail View"></div>
+        </div>
+        <div class="modal-info">
+          <h2 id="modalTitle">Item title</h2>
+          <p class="modal-price">$0.00</p>
+          <p class="modal-description">Item description goes here. This space will show more details about the selected product.</p>
+          <ul class="modal-details">
+          </ul>
+          <div class="modal-controls">
+            <button class="modal-prev" type="button">Previous</button>
+            <button class="modal-next" type="button">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer class="footer-grid">
       <div>

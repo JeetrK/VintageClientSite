@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Vintage Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-header {
+      padding: 24px 0;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .contact-header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 16px 0;
+      color: var(--text);
+    }
+
+    .contact-header p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .contact-sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .contact-section {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e5e5e5;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 1.5rem;
+      color: var(--text);
+      margin: 0 0 16px 0;
+    }
+
+    .contact-section p {
+      font-size: 1rem;
+      color: var(--muted);
+      margin: 0 0 16px 0;
+      line-height: 1.6;
+    }
+
+    .contact-section a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .contact-section a:hover {
+      color: var(--card);
+    }
+
+    .email-content {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .location-content {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 1.25rem;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--card);
+    }
+
+    .map-container {
+      width: 100%;
+      margin: 48px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e5e5e5;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .map-container iframe {
+        height: 350px;
+      }
+
+      .contact-sections {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .contact-section {
+        padding: 24px;
+      }
+
+      .contact-header {
+        margin-bottom: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="imgs/logo2.png" alt="Vintage Shop Logo" class="logo">
+  </header>
+  <button id="menuToggle" class="menu-toggle" aria-label="Open navigation">☰</button>
+
+  <aside id="sideNav" class="side-nav" aria-hidden="true">
+    <button id="closeNav" class="close-nav" aria-label="Close navigation">×</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </aside>
+
+  <div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
+
+  <main class="container">
+    <section class="contact-header">
+      <h1>Contact Us</h1>
+      <p>Get in touch with us through any of these channels</p>
+    </section>
+
+    <section class="contact-sections">
+      <div class="contact-section">
+        <h2>Email</h2>
+        <p>For any inquiries, send me an email and I'll get back to you as soon as possible.</p>
+        <div class="email-content">
+          <a href="mailto:info@vintageshop.com">salamontecalvo@gmail.com </a>
+        </div>
+      </div>
+
+      <div class="contact-section">
+        <h2>Location</h2>
+        <div class="location-content">
+          <p>
+            Ghost Town AP<br>
+            658 Cookman Ave, Suite 13<br>
+           Asbury Park, NJ 07712<br>
+          </p>
+          <p><strong>Hours:</strong><br>
+            Wednesday - Sunday: 12-6<br>
+           Monday & Tuesday by Chance or Appointment <br>
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-section">
+        <h2>Social Media</h2>
+        <p>Follow us on social media for the latest vintage finds and updates.</p>
+        <div class="social-links">
+          <a href="#facebook" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/objectamericana/" aria-label="Instagram">📷</a>
+          <a href="#twitter" aria-label="Twitter">𝕏</a>
+          <a href="#pinterest" aria-label="Pinterest">📌</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.5234567890!2d-74.0148!3d40.2206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2578d3b8b4567%3A0x1234567890abcdef!2s658%20Cookman%20Ave%2C%20Asbury%20Park%2C%20NJ%2007712!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Store location map"></iframe>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
