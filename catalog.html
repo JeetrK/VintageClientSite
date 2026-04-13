@@ -7,14 +7,24 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .catalog-header {
-      padding: 24px 0;
-      margin-bottom: 32px;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      width: 100vw;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      padding: 28px min(6vw, 56px) 24px;
+      margin-bottom: 36px;
+      border-bottom: 2px solid rgba(0,0,0,.18);
+      background: linear-gradient(180deg, rgba(255,250,239,.96), rgba(244,229,194,.95));
+      text-align: center;
     }
 
     .catalog-header h1 {
       font-size: clamp(2rem, 4vw, 3rem);
       margin: 0 0 16px 0;
       color: var(--text);
+      letter-spacing: 0.02em;
     }
 
     .catalog-header p {
@@ -31,32 +41,39 @@
     }
 
     .catalog-item {
-      background: var(--white);
-      border-radius: 12px;
+      background: linear-gradient(180deg, #fff9f0 0%, #f3e2c1 100%);
+      border-radius: 0;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #e5e5e5;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      border: 2px solid #000;
       display: flex;
       flex-direction: column;
     }
 
     .catalog-item:hover {
       transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 32px 60px rgba(0, 0, 0, 0.28);
+      border-color: rgba(0,0,0,.35);
+    }
+
+    .catalog-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 32px 60px rgba(0, 0, 0, 0.28);
     }
 
     .catalog-item-image {
       width: 100%;
       aspect-ratio: 4 / 5;
-      background: linear-gradient(135deg, var(--card) 0%, var(--card2) 100%);
+      background: linear-gradient(135deg, #b88839 0%, #6c4422 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 3rem;
       color: var(--white);
-      opacity: 0.85;
+      opacity: 0.92;
       position: relative;
+      border-bottom: 2px solid rgba(0,0,0,.16);
     }
 
     .catalog-item-image img {
@@ -71,17 +88,20 @@
     .catalog-item-image.alt3 { background: linear-gradient(135deg, #9ac9a8 0%, #7ba3b6 100%); }
 
     .catalog-item-content {
-      padding: 16px;
+      padding: 18px;
       flex: 1;
       display: flex;
       flex-direction: column;
+      border-top: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.93);
     }
 
     .catalog-item-title {
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: 1.12rem;
+      font-weight: 700;
       color: var(--text);
-      margin: 0 0 8px 0;
+      letter-spacing: 0.02em;
+      margin: 0 0 10px 0;
     }
 
     .catalog-item-price {
@@ -95,20 +115,26 @@
       font-size: 0.95rem;
       color: var(--muted);
       margin: 0 0 16px 0;
-      line-height: 1.4;
+      line-height: 1.55;
       flex: 1;
     }
 
     .catalog-item-btn {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border: none;
       background: var(--accent);
       color: var(--white);
-      border-radius: 8px;
+      border-radius: 0;
       font-size: 1rem;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 12px 24px rgba(0,0,0,.18);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .catalog-item-btn:hover {
+      background: #6f3711;
+      transform: translateY(-1px);
     }
 
     .catalog-item-btn:hover {
@@ -139,10 +165,11 @@
       position: relative;
       width: min(95vw, 1080px);
       max-height: 90vh;
-      background: var(--white);
-      border-radius: 24px;
+      background: linear-gradient(180deg, #fffdf7 0%, #f5e3c4 100%);
+      border-radius: 0;
       overflow: hidden;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      border: 2px solid #000;
+      box-shadow: 0 28px 56px rgba(0, 0, 0, 0.26);
       z-index: 1;
       display: grid;
       grid-template-columns: 1.4fr 1fr;
@@ -168,9 +195,11 @@
     .modal-carousel {
       position: relative;
       background: #f7f2e8;
-      border-radius: 18px;
+      border-radius: 0;
       overflow: hidden;
       min-height: 420px;
+      border: 2px solid #000;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
     }
 
     .modal-slide {
@@ -230,7 +259,7 @@
 
     .modal-details li {
       background: #f5efe1;
-      border-radius: 12px;
+      border-radius: 0;
       padding: 12px 14px;
       color: var(--text);
       font-size: 0.98rem;
@@ -249,7 +278,7 @@
       border: none;
       background: var(--accent);
       color: var(--white);
-      border-radius: 12px;
+      border-radius: 0;
       cursor: pointer;
       font-weight: 600;
       transition: background 0.3s ease;
@@ -392,8 +421,8 @@
         <div class="catalog-item-content">
           <h3 class="catalog-item-title">Korean war a-2 leather bomber jacket</h3>
           <p class="catalog-item-price">$2000.00 - $3500.00</p>
-          <p class="catalog-item-description">1960s - 1970s Korean war a-2 leather bomber jacket with gripper zipper and mig-15 embroidery  </p>
-          <button class="catalog-item-btn" type="button" data-title="Korean war a-2 leather bomber jacket" data-price="$2000.00 - $3500.00" data-description="1960s - 1970s Korean war a-2 leather bomber jacket with gripper zipper and mig-15 embroidery  " data-details="Size: L" data-images="Bomber1.jpg|Bomber2.jpg">View Details</button>
+          <p class="catalog-item-description">1950s - 1960s Korean war a-2 leather bomber jacket with gripper zipper and mig-15 embroidery  </p>
+          <button class="catalog-item-btn" type="button" data-title="Korean war a-2 leather bomber jacket" data-price="$2000.00 - $3500.00" data-description="1950s - 1960s Korean war a-2 leather bomber jacket with gripper zipper and mig-15 embroidery  " data-details="Size: L" data-images="Bomber1.jpg|Bomber2.jpg">View Details</button>
         </div>
       </article>
 
