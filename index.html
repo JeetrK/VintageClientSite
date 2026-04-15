@@ -7,11 +7,11 @@
   <link rel=stylesheet href=style.css>
 </head>
 <body>
-  <header class="header">
-    <img src="imgs/logo2.png" alt="Vintage Shop Logo" class="logo">
-    <div class="logo-text">Puck u ragz</div>
+  <header class="header" data-animate="fade-up-soft" style="--enter-delay: 0.05s;">
+    <img src="imgs/logo2.png" alt="Vintage Shop Logo" class="logo" data-animate="zoom-in" style="--enter-delay: 0.12s;">
+    <div class="logo-text" data-animate="fade-up-soft" style="--enter-delay: 0.18s;">Puck u ragz</div>
   </header>
-  <button id="menuToggle" class="menu-toggle" aria-label="Open navigation">☰</button>
+  <button id="menuToggle" class="menu-toggle" aria-label="Open navigation" data-animate="fade-right" style="--enter-delay: 0.16s;">☰</button>
 
   <aside id="sideNav" class="side-nav" aria-hidden="true">
     <button id="closeNav" class="close-nav" aria-label="Close navigation">×</button>
@@ -25,36 +25,34 @@
   <div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
 
   <main class=container>
-    <section class=carousel-wrapper>
-      <div class="slideshow" aria-live="polite" aria-label="Fading hero slides">
+    <section class=carousel-wrapper data-animate="fade-up-soft" style="--enter-delay: 0.24s;">
+      <div class="slideshow" aria-live="polite" aria-label="Fading hero slides" data-animate="zoom-in" style="--enter-delay: 0.3s;">
         <div class="slide slide-1"></div>
         <div class="slide slide-2"></div>
         <div class="slide slide-3"></div>
-        <div class="slide slide-4"></div>
-        <div class="slide slide-5"></div>
       </div>
     </section>
-    <section id=about class=about-section>
+    <section id=about class=about-section data-animate="fade-right" style="--enter-delay: 0.38s;">
       <div class=about-content>
         <h2>About Us</h2>
         <p>“Every piece has a story and your the next character”</p>
         <p>All items are local sourced from flea markets , original owners And antique shops across monmouth and middlesex county nj </p>
       </div>
     </section>
-    <section class="about-section about-right">
+    <section class="about-section about-right" data-animate="fade-left" style="--enter-delay: 0.48s;">
       <div class=about-content>
         <h2>Our goal</h2>
         <p>We are committed to providing one of the best curated selections of antique and vintage clothing for you to add to your collection or wear every day. Our goal is to create a space where everyone can find unique pieces they love at a price they can afford.</p>
       </div>
     </section>
-    <section id=newsletter class=newsletter>
-      <h3>Newsletter</h3>
+    <section id=newsletter class=newsletter data-animate="fade-up-soft" style="--enter-delay: 0.58s;">
+      <h3 data-animate="fade-up-soft" style="--enter-delay: 0.64s;">Newsletter</h3>
       <form id=newsletterForm class=newsletter-form action=#>
         <input type=email placeholder=Email Address required>
         <button type=submit>Subscribe</button>
       </form>
     </section>
-    <footer class=footer-grid>
+    <footer class=footer-grid data-animate="fade-up-soft" style="--enter-delay: 0.72s;">
       <div>
         <h4>Shop</h4>
         <a href=#>Home</a>

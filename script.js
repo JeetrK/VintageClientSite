@@ -4,6 +4,24 @@
   var closeNav = document.getElementById('closeNav');
   var navOverlay = document.getElementById('navOverlay');
   var mainContainer = document.querySelector('.container');
+  var animatedElements = document.querySelectorAll('[data-animate]');
+  var staggeredElements = document.querySelectorAll('[data-stagger]');
+
+  staggeredElements.forEach(function(element, index) {
+    if (!element.style.getPropertyValue('--enter-delay')) {
+      element.style.setProperty('--enter-delay', (0.28 + (index * 0.08)) + 's');
+    }
+  });
+
+  animatedElements.forEach(function(element, index) {
+    if (!element.style.getPropertyValue('--enter-delay')) {
+      element.style.setProperty('--enter-delay', (0.12 + (index * 0.05)) + 's');
+    }
+  });
+
+  window.requestAnimationFrame(function() {
+    document.body.classList.add('is-ready');
+  });
 
   function openNav() {
     sideNav.classList.add('open');
