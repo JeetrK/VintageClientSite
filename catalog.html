@@ -287,6 +287,30 @@
       font-size: 0.98rem;
     }
 
+    .modal-contact-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: 16px;
+      padding: 13px 16px;
+      border: 2px solid var(--card2);
+      background: transparent;
+      color: var(--card2);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .modal-contact-link:hover {
+      background: var(--card2);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
     .modal-controls {
       display: flex;
       justify-content: space-between;
@@ -515,35 +539,13 @@
             <button class="modal-prev" type="button">Previous</button>
             <button class="modal-next" type="button">Next</button>
           </div>
+          <a class="modal-contact-link" href="contact.html">Contact Us About This Item</a>
         </div>
       </div>
     </div>
 
     <footer class="footer-grid">
-      <div>
-        <h4>Shop</h4>
-        <a href="#">Home</a>
-        <a href="#">Rantisei</a>
-        <a href="#">Bamtical</a>
-      </div>
-      <div>
-        <h4>Help</h4>
-        <a href="#">Home</a>
-        <a href="#">Rantical</a>
-        <a href="#">Bamtical</a>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <a href="#">Home</a>
-        <a href="#">Rantical</a>
-        <a href="#">Bamtical</a>
-      </div>
-      <div>
-        <h4>Social</h4>
-        <div class="social-icons">
-          <span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
-      </div>
+        <p>Brick and mortar and ghost town and object americana</p>
     </footer>
   </main>
 
